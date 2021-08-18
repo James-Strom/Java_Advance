@@ -41,12 +41,12 @@ public class Test {
 //    }
 //    Cast Test 1
     public static void main(String[] args) {
-        Employee e = new Manager(102, "Joan Kern",
+        Employee e = new Managers(102, "Joan Kern",
                 "012-23-4567", 110_450.54, "Marketing");
 
-        if (e instanceof Manager) {
+        if (e instanceof Managers) {
 //      Manager m = (Manager) e;
-            Manager m = new Manager(102, "Joan Kern", "012-23-4567", 110_450.54, "Marketing");
+            Managers m = new Managers(102, "Joan Kern", "012-23-4567", 110_450.54, "Marketing");
             m.setDeptName("HR");
             System.out.println(m.getDetails());
             System.out.println(e.getDetails());

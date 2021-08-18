@@ -5,7 +5,7 @@
  */
 package Lesson4.Employees;
 
-public class Director extends Manager {
+public class Director extends Managers {
 
     private String groupName;
 

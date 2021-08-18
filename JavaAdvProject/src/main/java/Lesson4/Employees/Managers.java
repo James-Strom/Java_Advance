@@ -5,7 +5,7 @@
  */
 package Lesson4.Employees;
 
-public class Manager extends Employee {
+public class Managers extends Employee {
 
     private String deptName;
 
@@ -17,7 +17,7 @@ public class Manager extends Employee {
         this.deptName = deptName;
     }
 
-    public Manager(int empId, String name, String ssn, double salary, String dept) {
+    public Managers(int empId, String name, String ssn, double salary, String dept) {
         super(empId, name, ssn, salary);
         deptName = dept;
     }

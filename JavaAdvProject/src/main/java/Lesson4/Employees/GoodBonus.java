@@ -11,7 +11,7 @@ public class GoodBonus {
       return e.getSalary() * 0.01;
     }else if (e instanceof Engineer){
       return e.getSalary() * 0.02;
-    }else if (e instanceof Manager){
+    }else if (e instanceof Managers){
       return e.getSalary() * 0.03;
     }else if (e instanceof Director){
       return e.getSalary() * 0.05;
