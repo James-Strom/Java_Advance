@@ -3,14 +3,16 @@ package com.example.test;
 import com.example.domain.Item;
 import com.example.domain.ShoppingCart;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.text.NumberFormat;
 
 public class SerializeTest {
 
     public static void main(String[] args) {
-        String directory = "/home/oracle/labs/13-IO_Fundamentals/practices/practice2/SerializeShoppingCart" ;
+        String directory = "C:\\Computer Files\\Code College\\Java_advanced\\Classwork\\java_Practises\\13.IO_Fundamentals\\practice2\\SerializeShoppingCart13-02Prac" ;
         String cartId = null;
         ShoppingCart cart = null;
         System.out.println("Enter the ID of the cart file to create and serialize or q exit.");
@@ -37,6 +39,13 @@ public class SerializeTest {
                 + NumberFormat.getCurrencyInstance().format(cart.getCartTotal()));
 
         String cartFile = directory + "cart" + cart.getCartID() + ".ser";
-        // Your code goes here....
+        try (FileOutputStream fos = new FileOutputStream(cartFile);
+                ObjectOutputStream o = new ObjectOutputStream(fos)) {
+            o.writeObject(cart);
+        } catch (IOException e) {
+            System.out.println("Exception serializing " + cartFile + ": " + e);
+            System.exit(-1);
+        }
+        System.out.println("Successfully serialized shopping cart with ID: " + cart.getCartID());
     }
 }
