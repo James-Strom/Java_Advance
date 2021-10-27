@@ -12,8 +12,7 @@ public class Soccer {
         Scanner sc = null;
         String match, team1, team2, score1, score2;
         int leagueTotal = 0;
-        int position = 0;
-        HashMap<String, Integer> scoreboard = new HashMap<>();
+        TreeMap<String, Integer> scoreboard = new TreeMap<>();
 
         String[] sides, l1, l2;
         try {
@@ -24,7 +23,7 @@ public class Soccer {
 
         while (sc.hasNextLine()) {
 
-            Map<String, Integer> map = new HashMap<>();
+            Map<String, Integer> map = new TreeMap<>();
             leagueTotal = 0;
             match = sc.nextLine();
             sides = match.split(",");
@@ -50,14 +49,15 @@ public class Soccer {
             }
         }
 
-        for (Map.Entry<String, Integer> points: scoreboard.entrySet()) {
-//            String key = name;
-//            String value = scoreboard.get(name).toString();
-//            position++;
-//            System.out.println(position + ". " + key + " " + value);
-            System.out.println(points.getKey() + " "+points.getValue());
+        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
 
-        }
+        scoreboard.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+//                .sorted(Map.Entry.comparingByKey())
+                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+
+        System.out.println("Rankings: " + reverseSortedMap);
     }
 }
 
